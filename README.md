@@ -93,3 +93,6 @@ lifecycle
   install
   activate
   fetch
+
+  ## indexedDb
+  
