@@ -1,14 +1,14 @@
-'use strict';
+// 'use strict'; // this line causes an error and makes it so the graph doesn't show offline
 
 // Update cache names any time any of the cached files change.
-const CACHE_NAME = 'static-cache-v1';
-const DATA_CACHE_NAME = 'data-cache-v1';
+const CACHE_NAME = 'static-cache-v2';
+const DATA_CACHE_NAME = 'data-cache-v2';
 
 // Add list of files to cache here.
 const FILES_TO_CACHE = [
   '/',
-  // '/index.html',
-  '/index.js',
+  '/index.html',
+  '/db.js',
   '/styles.css',
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png'
@@ -45,20 +45,20 @@ self.addEventListener('activate', (evt) => {
 });
 
 // FETCH
-self.addEventListener("fetch", evt => {
-    evt.respondWith(fetch(event.request).catch(function() {
-      return caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          return response;
-        } else if (event.request.headers.get("accept").includes("text/html")) {
-          return caches.match("/index.html");
-        }
-      });
-    }));
-});
+// self.addEventListener("fetch", evt => {
+//     evt.respondWith(fetch(event.request).catch(function() { // error here: event is not defined
+//       return caches.match(event.request)
+//       .then(function(response) {
+//         if (response) {
+//           return response;
+//         } else if (event.request.headers.get("accept").includes("text/html")) {
+//           return caches.match("/index.html");
+//         }
+//       });
+//     }));
+// });
 
-/*
+
 // FETCH
 self.addEventListener("fetch", evt => {
   if (evt.request.url.includes("/api/")) {
@@ -74,7 +74,7 @@ self.addEventListener("fetch", evt => {
           })
           .catch(err => {
             // Network request failed, try to get it from the cache.
-              return cache.match(evt.request);
+              return cache.match(evt.request); // ERROR: chart is not defined
             
           });
       }).catch(err => {
@@ -94,4 +94,3 @@ self.addEventListener("fetch", evt => {
     })
   );
 });
-*/
