@@ -1,4 +1,4 @@
-// 'use strict'; // this line causes an error and makes it so the graph doesn't show offline
+'use strict'; // this line causes an error and makes it so the graph doesn't show offline
 
 // Update cache names any time any of the cached files change.
 const CACHE_NAME = 'static-cache-v2';
