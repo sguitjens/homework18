@@ -47,21 +47,6 @@ self.addEventListener('activate', (evt) => {
 });
 
 // FETCH
-// self.addEventListener("fetch", evt => {
-//     evt.respondWith(fetch(event.request).catch(function() { // error here: event is not defined
-//       return caches.match(event.request)
-//       .then(function(response) {
-//         if (response) {
-//           return response;
-//         } else if (event.request.headers.get("accept").includes("text/html")) {
-//           return caches.match("/index.html");
-//         }
-//       });
-//     }));
-// });
-
-
-// FETCH
 self.addEventListener("fetch", evt => {
   if (evt.request.url.includes("/api/")) {
     evt.respondWith(
